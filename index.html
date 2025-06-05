@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <!-- This is the head -->
+        <div class="firstTitle">
+            <img src="./images/Gpa Calculator.png" alt="">
+            <div>
+                <h1>Group-9- <span class="gpa">GPA</span> Calculator</h1>
+                <hr class="line">
+
+            </div>
+           
+            
+
+        </div>
+        
+        <!-- the field for inserting grades and courses -->
+         <section class="insert">
+            <div>
+                <h1 class="inserthead">Insert Grades (out of 5)</h1>
+         <form action="">
+            <input id="course" type="text" placeholder="Insert your class/subject....">
+            <br>
+            <input  id="score" type="text" placeholder="Insert your grade..."><br>
+            <button id="btn">Add</button>
+         </form>
+
+            </div>
+            
+         <!-- the display for the calculated gpa -->
+          <div>
+            <h1 class="inserthead">Your GPA(out of 5) is: </h1>
+            <div class="display">
+                <h1 id="calcGPA"></h1>
+            </div>
+          </div>
+
+         </section>
+         <!-- section 2 for keeping logs and saved assignments -->
+          <section class="logs">
+            <div>
+                <h1>Entered Assignments(logs)</h1>
+                <hr>
+                <ol id="mylist">
+                    
+                </ol>
+              </div>
+              <div class="final">
+                <img src="./images/Info.png" alt="">
+                <p>Press S on your  <br> to view all data on console </p>
+              </div>
+
+          </section>
+          
+         
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
