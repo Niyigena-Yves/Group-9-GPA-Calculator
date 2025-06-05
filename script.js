@@ -1,64 +1,45 @@
-// GPA Calculator - Core JavaScript Logic (Compatible Version)
-// Lines 1-44: Data Management & GPA Calculation
+const grades = JSON.parse(localStorage.getItem("grades")) || [];
+let courseObject = '';
+let course = '';
+let score = '';
 
-// Global array to store all assignments
-var entries = [];
+// Function to insert data into the array and save to localStorage
+function insert() {
+    course = document.getElementById('course').value;
+    score = parseFloat(document.getElementById('score').value);
 
-// Function to add a new assignment
-function addAssignment(name, grade) {
-    // Validate inputs
-    if (!name || name.trim() === '') {
-        console.error('Assignment name cannot be empty');
-        return false;
+    if (course.trim() === "" || isNaN(score) || score < 0 || score > 5) {
+        alert("Please enter a valid grade between 0 and 5!");
+        return; 
     }
-    
-    if (isNaN(grade) || grade < 0 || grade > 5) {
-        console.error('Grade must be a number between 0 and 5');
-        return false;
-    }
-    
-    // Create assignment object
-    var assignment = {
-        id: Date.now(), // Simple unique ID
-        name: name.trim(),
-        grade: parseFloat(grade),
-        dateAdded: new Date().toLocaleString()
-    };
-    
-    // Add to entries array
-    entries.push(assignment);
-    console.log('Assignment added:', assignment);
-    return true;
+
+    courseObject = { name: course, points: score };
+    grades.push(courseObject);
+    localStorage.setItem("grades", JSON.stringify(grades)); 
+    display();
+    displayGPA();
+}
+
+// Function to display entered data
+function display() {
+    let mylist = document.getElementById('mylist');
+    mylist.innerHTML = ""; 
+
+    grades.forEach(courseObject => {
+        let listItem = document.createElement('li');
+        listItem.textContent = `${courseObject.name} -- ${courseObject.points}`;
+        mylist.appendChild(listItem);
+    });
+
+    document.getElementById('course').value = "";
+    document.getElementById('score').value = "";
 }
 
 // Function to calculate GPA
 function calculateGPA() {
-    if (entries.length === 0) {
-        return 0;
-    }
-    
-    // Sum all grades using reduce method
-    var totalGrades = entries.reduce(function(sum, entry) {
-        return sum + entry.grade;
-    }, 0);
-    
-    // Calculate average (GPA)
-    var gpa = totalGrades / entries.length;
-    return Math.round(gpa * 100) / 100; // Round to 2 decimal places
-}
-
-// Function to get all assignments
-function getAllAssignments() {
-    return entries;
-}
-
-// Function to remove an assignment by ID
-function removeAssignment(id) {
-    var initialLength = entries.length;
-    entries = entries.filter(function(entry) {
-        return entry.id !== id;
-    });
-    return entries.length < initialLength; // Returns true if removed
+    if (grades.length === 0) return "N/A";
+    let totalGrades = grades.reduce((sum, course) => sum + course.points, 0);
+    return (totalGrades / grades.length).toFixed(2);
 }
 
 // Function to display GPA in console and update UI
