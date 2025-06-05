@@ -32,8 +32,8 @@ section {
 }
 
 .firstTitle img {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 70px;
     border-radius: 8px;
     margin-bottom: 10px;
     display: block;
@@ -226,7 +226,7 @@ form input[type="text"]::placeholder {
 }
 
 .final img {
-    width: 24px;
+    width: 54px;
     height: 24px;
     margin-bottom: 8px;
     opacity: 0.7;
