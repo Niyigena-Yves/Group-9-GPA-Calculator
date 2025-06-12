@@ -1,6 +1,8 @@
 # Group 9- GPA Calculator
 
 Simple GPA calculator that tracks your grades and calculates your GPA dynamically.
+https://niyigena-yves.github.io/Group-9-GPA-Calculator/
+
 # Group 9-Members
 - Esther Mahoro
 - Yves Niyigena
